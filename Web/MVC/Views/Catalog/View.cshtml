@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MVC.ViewModels.GameItemPage>
+
+<table>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                Name : @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                    <a href="#"><img  src=@item.PicturePath  width="150" height="180"></a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count) count
+            </td>                
+        </tr>
+}
+    </tbody>
+</table>

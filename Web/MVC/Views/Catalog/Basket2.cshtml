@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MVC.ViewModels.ItemGame>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Basket2</title>
+</head>
+<body>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope ="col" hidden>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+                <th scope="col">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+                <th scope="col">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+                <th scope="col">
+                @Html.DisplayNameFor(model => model.PictureFileName)
+            </th scope ="col">
+            <th>
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) 
+{
+        <tr scope="row">
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                $ @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <img class="img-rounded" height="100" src="@Html.DisplayFor(modelItem => item.PictureFileName)" alt="">                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count) count
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+<p class="button">
+	@Html.ActionLink("RemoveBasket", "RemoveBasket", "Catalog", "")
+</p>
+</tbody>
+</table>
+</body>
+</html>

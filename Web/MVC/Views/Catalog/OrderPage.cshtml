@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MVC.ViewModels.OrdersPage>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OrderPage</title>
+</head>
+<body>
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <h4>Order id: @Html.DisplayFor(modelItem => item.Id) Summa: @Html.DisplayFor(modelItem => item.Price) $</h4>
+        </tr>
+        <h3>Items: </h3>
+        <partial name="View" model="@item.Items" />
+       <hr style="height:3px;border-width:0;color:green;background-color:green">
+}
+    </tbody>
+</table>
+</body>
+</html>

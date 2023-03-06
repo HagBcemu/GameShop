@@ -1,0 +1,47 @@
+﻿@model MVC.ViewModels.CatalogViewModels.IndexViewModel
+
+@*<div class="modal fade" id="modal-cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">*@
+<div class="modal-dialog modal-xl" style="z-index: 3">
+		<div class="modal-content">
+			<div class="modal-header bg-secondary text-white">
+				<h5 class="modal-title" id="exampleModalLabel">Корзина</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<table class="table">
+					<tbody>
+					@if (Model.BasketItems != null)
+						{
+							@foreach (var catalogItem in Model.BasketItems.ToList())
+							{
+								<tr>
+									<td><img src="@catalogItem.PictureFileName" alt=""></td>
+									<td><a href="#">@catalogItem.Name</a></td>
+									<td>$@catalogItem.Price</td>
+									<td>@catalogItem.Count </td>
+								<td><p class="button">@Html.ActionLink("Remove", "RemoveOneItemInBasket", "Catalog", new { id = @catalogItem.Id })</p></td>
+								</tr>
+							}
+						}
+						else
+						{
+							<tr>
+								<td>Корзина пустая</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+			<h5 font-weight:normal>Summa = @ViewData["SumBasket"] $</h5>
+			<p class="button btn btn-success">
+				@Html.ActionLink("Create order", "CreateOrder", "Catalog", "")
+				</p>
+				<p class="button btn btn-danger">
+					@Html.ActionLink("Clear Basket", "RemoveBasket", "Catalog", "")
+				</p>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+@*</div>*@
